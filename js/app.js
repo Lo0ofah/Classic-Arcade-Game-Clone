@@ -9,7 +9,7 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
         this.x = x;
         this.y = y;
-        this.speed =(( 1 + Math.random())* 30 ) * (( 1 + Math.random())* 4);
+        this.speed =(( 1 + Math.random())* 40 ) * (( 1 + Math.random())* 4);
 
     }
 
@@ -22,6 +22,7 @@ class Enemy {
     this.x +=  this.speed * dt;
     if( this.x > 550){
       this.x = 0;
+      this.speed =(( 1 + Math.random())* 40 ) * (( 1 + Math.random())* 4);
     }
  }
 
@@ -34,20 +35,36 @@ class Enemy {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-class player{
-    constructor(){
-        this.sprite = 'images/char-boy';
-    }
-
-    update(dt){
-
+class Player{
+    constructor(x,y){
+        this.sprite = 'images/char-boy.png';
+        this.x = x;
+        this.y = y ;
     }
 
     render(){
-
+     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    handleInput(){
+    handleInput(key){
+      switch(key){
+        case "right" :{
+        (this.x < 400 )? this.x += 100  :this.x ;
+          break;
+        }
+        case "left" :{
+         (this.x > 0) ? this.x -= 100  :this.x ;
+          break;
+        }
+        case "up" :{
+          (this.y > 0) ? this.y -= 90  : this.y;
+          break;
+        }
+        case "down" :{
+          (this.y < 390) ? this.y += 90  : this.y;
+          break;
+        }
+      }
 
     }
 }
@@ -57,8 +74,7 @@ class player{
 // Place all enemy objects in an array called allEnemies
  var allEnemies = [new Enemy(0, 60) , new Enemy(0, 140) ,new Enemy(0, 60) , new Enemy(0, 230)];
 // Place the player object in a variable called player
-
-
+ var player =  new Player(200,400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -70,5 +86,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-  //  player.handleInput(allowedKeys[e.keyCode]);
+   player.handleInput(allowedKeys[e.keyCode]);
 });
