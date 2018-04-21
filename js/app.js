@@ -25,6 +25,23 @@ class Enemy {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+class player{
+    constructor(){
+        this.sprite = 'images/char-boy';
+    }
+
+    update(dt){
+      
+    }
+
+    render(){
+
+    }
+
+    handleInput(){
+
+    }
+}
 
 
 // Now instantiate your objects.
