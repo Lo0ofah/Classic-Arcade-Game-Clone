@@ -49,6 +49,12 @@ class Player{
         this.x = x;
         this.y = y ;
     }
+    update(){
+      if(player.y < -10){
+        player.x = 200;
+        player.y = 400;
+      }
+    }
 
     render(){
      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
