@@ -1,6 +1,6 @@
 // Enemies  player must avoid
 class Enemy {
-    constructor(x, y ,speed){
+    constructor(x, y){
       // Variables applied to each of our instances go here,
       // we've provided one for you to get started
 
@@ -9,6 +9,7 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
         this.x = x;
         this.y = y;
+        //set a random speed
         this.speed = (( 1 + Math.random())* 80 );
 
     }
@@ -19,15 +20,19 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    //move the enemy
     this.x +=  this.speed * dt;
+    //check if enemy reach the end of the canvas
     if( this.x > 550){
+      //reset the enemy position and set another random speed
         this.x = 0;
         this.speed =(( 1 + Math.random())* 80 );
     }
  }
-
+//check if a collision happen
  checkCollisions(){
    if( this.x + 50 > player.x && this.x <  player.x + 30 && this.y + 20 > player.y && this.y <   player.y + 30){
+     //when collision happen reset the player position
        player.x = 200;
        player.y = 400;
 
@@ -49,7 +54,9 @@ class Player{
         this.x = x;
         this.y = y ;
     }
+
     update(){
+      //check if the player reach thw water
       if(player.y < -10){
         player.x = 200;
         player.y = 400;
@@ -59,7 +66,7 @@ class Player{
     render(){
      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-
+  // handling the player moves
     handleInput(key){
       switch(key){
         case "right" :{
