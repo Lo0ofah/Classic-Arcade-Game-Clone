@@ -1,3 +1,4 @@
+let hearts = document.getElementsByTagName("li");
 // Enemies  player must avoid
 class Enemy {
     constructor(x, y){
@@ -35,6 +36,15 @@ class Enemy {
      //when collision happen reset the player position
        player.x = 200;
        player.y = 400;
+       //decrement the heart counter
+       player.heartCount--;
+       loseHeart();
+       if(player.heartCount===0){
+         swal("You lose", "Try again", "error");
+         player.heartCount = 3;
+          fillHearts();
+       }
+
 
    }
  }
@@ -53,14 +63,17 @@ class Player{
         this.sprite = 'images/char-boy.png';
         this.x = x;
         this.y = y ;
+        this.heartCount = 3;
     }
 
     update(){
       //check if the player reach thw water
       if(player.y < -10){
-        swal("Gongratulations,","You Won !" ,"success");
+        swal("Gongratulations,","You Won ! with "+  player.heartCount +" Hearts" ,"success");
           player.x = 200;
           player.y = 400;
+          player.heartCount = 3;
+          fillHearts();
       }
     }
 
@@ -110,3 +123,15 @@ document.addEventListener('keyup', function(e) {
 
    player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function loseHeart(){
+  let heartsElement = hearts[player.heartCount].getElementsByTagName("i")[0];
+   heartsElement.setAttribute("class","fas fa-heart fa-2x");
+}
+
+function fillHearts(){
+  for(let i=0; i< hearts.length ; i++){
+      let heartsElement = hearts[i].getElementsByTagName("i")[0];
+      heartsElement.setAttribute("class","fas fa-heart fa-2x red");
+  }
+}
