@@ -1,6 +1,30 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game Clone
+Classic Arcade Game Clone is game that require player to move and avoid enemies to win the game.
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
+* [installation](#installation)
+* [App's functionality](#App's-functionality)
+* [Resources](#Resources)
+* [References](#contributing)
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## installation
+Download the project
+To run the project search for index.html and open it in a browser.
+
+## App's functionality
+The player can move in any direction using keyboard Arrows.
+The player can not move off the screen.
+The player have to reach the water without any collision to win.
+if the player collision with any enemy he will back to the beginning and lose one heart.
+When the player lose all his hearts he will lose and back to the beginning.
+if the player reach the water he will win and back to the beginning.
+
+## Resources
+What I use beside the HTML, CSS, JavaScript
+[sweetalert](https://sweetalert.js.org/)
+
+## References
+What helped me in developing the project
+Front End Nanodegree Udacity course
+[w3schools](https://www.w3schools.com/)
+[Dillinger](https://dillinger.io/)
