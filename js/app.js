@@ -58,8 +58,9 @@ class Player{
     update(){
       //check if the player reach thw water
       if(player.y < -10){
-        player.x = 200;
-        player.y = 400;
+        swal("Gongratulations,","You Won !" ,"success");
+          player.x = 200;
+          player.y = 400;
       }
     }
 
