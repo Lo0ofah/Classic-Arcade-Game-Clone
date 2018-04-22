@@ -1,6 +1,6 @@
 // Enemies  player must avoid
 class Enemy {
-    constructor(x, y){
+    constructor(x, y ,speed){
       // Variables applied to each of our instances go here,
       // we've provided one for you to get started
 
@@ -9,7 +9,7 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
         this.x = x;
         this.y = y;
-        this.speed =(( 1 + Math.random())* 40 ) * (( 1 + Math.random())* 4);
+        this.speed = (( 1 + Math.random())* 80 );
 
     }
 
@@ -21,9 +21,17 @@ class Enemy {
     // all computers.
     this.x +=  this.speed * dt;
     if( this.x > 550){
-      this.x = 0;
-      this.speed =(( 1 + Math.random())* 40 ) * (( 1 + Math.random())* 4);
+        this.x = 0;
+        this.speed =(( 1 + Math.random())* 80 );
     }
+ }
+
+ checkCollisions(){
+   if( this.x + 50 > player.x && this.x <  player.x + 30 && this.y + 20 > player.y && this.y <   player.y + 30){
+       player.x = 200;
+       player.y = 400;
+
+   }
  }
 
  // Draw the enemy on the screen, required method for game
@@ -72,7 +80,7 @@ class Player{
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
- var allEnemies = [new Enemy(0, 60) , new Enemy(0, 140) ,new Enemy(0, 60) , new Enemy(0, 230)];
+ var allEnemies = [new Enemy(0, 230) , new Enemy(0, 60) , new Enemy(0, 60) , new Enemy(0, 140) ];
 // Place the player object in a variable called player
  var player =  new Player(200,400);
 
